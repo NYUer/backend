@@ -80,12 +80,7 @@ celerybeat-schedule
 *.sage.py
 
 # dotenv
-.env
-
-# virtualenv
-.venv
-venv/
-ENV/
+.envs
 
 # Spyder project settings
 .spyderproject
@@ -99,3 +94,6 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# mac trash
+nyuapi/.DS_Store
