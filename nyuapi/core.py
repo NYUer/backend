@@ -35,7 +35,10 @@ class Core():
         keyword = keyword.split()
         rsp = {}
         for word in keyword:
-            class_list = self.getRawClassesByInstuctor(word)
+            while 1:
+                class_list = self.getRawClassesByInstuctor(word)
+                if type(class_list) == type([1]):
+                   break
             for session in class_list:
                 instructor_nyuid = session["instructor_nyu_id"]
                 if instructor_nyuid not in rsp:

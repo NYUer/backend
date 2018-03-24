@@ -5,7 +5,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-api = SP("12c4b1b3-6e1b-3491-9b9f-14cf3d612045")
+api = SP("21b7bd14-02ed-3f02-bbe5-1a5a996564a2")
 
 
 @app.route('/course', methods=['GET'])
