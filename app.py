@@ -33,8 +33,12 @@ def search_class():
 
 @app.route('/faculty', methods=['GET'])
 def search_faculty():
-    keyword = request.args.get('instructor_nyu_id')
-    rsp = api.getRawFacultyByNYUId(keyword)
+    nyu_id = request.args.get('instructor_nyu_id')
+    keyword = request.args.get('keyword')
+    if keyword is None:
+        rsp = api.getRawFacultyByNYUId(nyu_id)
+    else:
+        rsp = api.getRawFacultyByKeyword(keyword)
     return jsonify(rsp)
 
 

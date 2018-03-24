@@ -31,6 +31,24 @@ class Core():
         getById = self.R.rawReq(self.CATE["faculty"] + "/users/nyu-ids/" + nyu_id, {})
         return getById
 
+    def getRawFacultyByKeyword(self, keyword):
+        keyword = keyword.split()
+        rsp = {}
+        for word in keyword:
+            class_list = self.getRawClassesByInstuctor(word)
+            for session in class_list:
+                instructor_nyuid = session["instructor_nyu_id"]
+                if instructor_nyuid not in rsp:
+                    rsp[instructor_nyuid] = dict(instructor_nyu_id=session["instructor_nyu_id"],
+                                                    instructor_role_description=session["instructor_role_description"],
+                                                    instructor_name=session["instructor_name"])
+        rsp = list(rsp.values())
+        return rsp
+
+    def getRawClassesByInstuctor(self, keyword):
+        getById = self.R.rawReq(self.CATE["class"] + "?instructor_name=" + keyword, {})
+        return getById
+
     def getRawClassesById(self, course_id):
         getById = self.R.rawReq(self.CATE["class"] + "?course_id=" + course_id, {})
         return getById
