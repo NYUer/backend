@@ -52,7 +52,7 @@ class Core():
 
     def getRawClassesByInstuctor(self, keyword):
         while 1:
-            getById = self.R.rawReq(self.CATE["class"] + "?instructor_preferred_name=" + keyword, {})
+            getById = self.R.rawReq(self.CATE["class"] + "?instructor_name=" + keyword, {})
             if isinstance(getById, list):
                 break
         return getById
