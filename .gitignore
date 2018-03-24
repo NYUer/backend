@@ -97,3 +97,7 @@ celerybeat-schedule
 
 # mac trash
 nyuapi/.DS_Store
+.idea/backend.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
