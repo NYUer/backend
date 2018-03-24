@@ -18,7 +18,16 @@ def search_course():
 @app.route('/class', methods=['GET'])
 def search_class():
     keyword = request.args.get('course_id')
-    rsp = api.getRawClassesById(keyword)
+    raw_rsp = api.getRawClassesById(keyword)
+    rsp = {}
+    for session in raw_rsp:
+        faculty_nid = session["instructor_nyu_id"]
+        if faculty_nid not in rsp:
+            new_faculty = dict(instructor_nyu_id = session["instructor_nyu_id"],
+                               instructor_role_description = session["instructor_role_description"],
+                               instructor_name = session["instructor_name"]
+                               )
+            rsp[faculty_nid] = new_faculty
     return jsonify(rsp)
 
 
