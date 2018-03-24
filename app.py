@@ -11,7 +11,7 @@ api = SP("12c4b1b3-6e1b-3491-9b9f-14cf3d612045")
 @app.route('/course', methods=['GET'])
 def search_course():
     keyword = request.args.get('keyword')
-    rsp = api.getRawCourses(keyword)[1]
+    rsp = api.getRawCourses(keyword)
     return jsonify(rsp)
 
 
@@ -30,4 +30,4 @@ def search_faculty():
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 80)
+    app.run()

@@ -36,18 +36,8 @@ class Core():
         return getById
 
     def getRawCourses(self, keywords=""):
-        getByTitle = self.R.rawReq(self.CATE["course"] + "?course_title=" + keywords, {})
-        getByDescr = self.R.rawReq(self.CATE["course"] + "?course_descr=" + keywords, {})
-
-        courseDataList = []
-        courseDataDict = {}
-
-        for c in getByTitle + getByDescr:
-            if c["course_id"] not in courseDataDict:
-                courseDataDict[c["course_id"]] = c
-                courseDataList.append(c)
-        
-        return (courseDataDict, courseDataList)
+        getByTitle = self.R.rawReq(self.CATE["course"] + "?course_title=" + keywords + "&limit=15", {})
+        return getByTitle
 
     def getRawCalenders(self, date="", term=None):
         # date = time.strftime('%Y/%m/%d',time.localtime())
