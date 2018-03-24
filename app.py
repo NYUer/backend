@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
 from nyuapi import SP
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 api = SP("12c4b1b3-6e1b-3491-9b9f-14cf3d612045")
 
@@ -28,4 +30,4 @@ def search_faculty():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run('0.0.0.0', 80)
