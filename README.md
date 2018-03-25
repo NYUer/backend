@@ -7,7 +7,7 @@ Our backend processes information obtained from NYU RESTful API and then sends i
 
 See our API documentation here:
 
-**[API Documentation](https://documenter.getpostman.com/view/3744743/swift-planner/RVtvpsou)**
+**[API Documentation](https://github.com/NYUer/backend/tree/master/nyuapi)**
 
 ##  Directory Structure
 * [./nyuapi](h)  is a module, which incapsulates NYU RESTful API into a python class.
