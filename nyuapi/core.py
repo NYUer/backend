@@ -66,7 +66,7 @@ class Core():
 
     def getRawCourses(self, keywords=""):
         while 1:
-            getByTitle = self.R.rawReq(self.CATE["course"] + "?course_title=" + keywords + "&limit=15", {})
+            getByTitle = self.R.rawReq(self.CATE["course"] + "?course_title=" + keywords + "&limit=50", {})
             if isinstance(getByTitle, list):
                 break
         return getByTitle
