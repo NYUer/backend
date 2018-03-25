@@ -10,5 +10,5 @@ See our API documentation here:
 **[API Documentation](https://github.com/NYUer/backend/tree/master/nyuapi)**
 
 ##  Directory Structure
-* [./nyuapi](h)  is a module, which incapsulates NYU RESTful API into a python class.
+* [./nyuapi](https://github.com/NYUer/backend/tree/master/nyuapi) is a python module which incapsulates NYU RESTful API into a python class.
 * [app.py](https://github.com/NYUer/backend/blob/master/app.py) is a simple Flask http request handler.
