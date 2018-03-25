@@ -5,7 +5,7 @@ Welcome to the backend repo of Swift Planner.
 
 Our backend processes information obtained from NYU RESTful API and then sends it to frontend via RESTful API.
 
-See our API documents here:
+See our API documentation here:
 
 **[API Documentation](https://documenter.getpostman.com/view/3744743/swift-planner/RVtvpsou)**
 
