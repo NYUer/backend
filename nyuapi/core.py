@@ -34,9 +34,12 @@ class Core():
         return getById
 
     def getRawFacultyByKeyword(self, keyword):
-        keyword = keyword.split()
+        search_list = [keyword]
+        split_list = keyword.split()
+        if len(split_list) > 1:
+            search_list.extend(split_list)
         rsp = {}
-        for word in keyword:
+        for word in search_list:
             while 1:
                 class_list = self.getRawClassesByInstuctor(word)
                 if isinstance(class_list, list):
