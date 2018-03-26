@@ -12,6 +12,17 @@ api = SP("21b7bd14-02ed-3f02-bbe5-1a5a996564a2")
 def search_course():
     keyword = request.args.get('keyword')
     rsp = api.getRawCourses(keyword)
+    count = 0
+    for course in rsp:
+        if count > 10:
+            break
+        spec_rsp = api.getRawClassesById(course['course_id'])
+        count += 1
+        if spec_rsp:
+            course['course_title'] = spec_rsp[0]['nyu_course_id'] + ": " + course['course_title']
+            course['location_description'] = spec_rsp[0]['location_description']
+        else:
+            course['location_description'] = "N/A"
     return jsonify(rsp)
 
 
@@ -43,4 +54,4 @@ def search_faculty():
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', 80, threaded=True)
+    app.run("0.0.0.0", 80, threaded=True)
