@@ -20,6 +20,7 @@ class reqNYU():
             raise Exception("[Error] Token is not valid!")
 
     def rawReq(self, uri="", params={}):
+        print("A request has been sent.")
         req = R.get(self.BASEURI + uri, data=params, headers={
             "Authorization": "Bearer " + self.TOKEN
         })
