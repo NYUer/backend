@@ -26,3 +26,18 @@ class reqNYU():
         })
         return req.json()
 
+    def repeatReq(self, uri="", params={}):
+        """
+        server will send request repeatedly until valid reponse is received.
+        However, if token invalid msg keep appearing, the server will halt.
+        Therefore, a server moniter is needed.
+        """ 
+        counter = 0
+        while 1:
+            response = self.rawReq(url, params)
+            counter += 1
+            if isinstance(response, list):
+                break
+            if counter > 10:
+                self.ping()
+        return response

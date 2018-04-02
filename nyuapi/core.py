@@ -27,10 +27,7 @@ class Core():
         self.R = request.reqNYU(self.TOKEN)
 
     def getRawFacultyByNYUId(self, nyu_id):
-        while 1:
-            getById = self.R.rawReq(self.CATE["faculty"] + "/users/nyu-ids/" + nyu_id, {})
-            if isinstance(getById, list):
-                break
+        getById = self.R.repeatReq(self.CATE["faculty"] + "/users/nyu-ids/" + nyu_id, {})
         return getById
 
     def getRawFacultyByKeyword(self, keyword):
@@ -40,10 +37,7 @@ class Core():
             search_list.extend(split_list)
         rsp = {}
         for word in search_list:
-            while 1:
-                class_list = self.getRawClassesByInstuctor(word)
-                if isinstance(class_list, list):
-                    break
+            class_list = self.getRawClassesByInstuctor(word)
             for session in class_list:
                 instructor_nyuid = session["instructor_nyu_id"]
                 if instructor_nyuid not in rsp:
@@ -54,24 +48,15 @@ class Core():
         return rsp
 
     def getRawClassesByInstuctor(self, keyword):
-        while 1:
-            getById = self.R.rawReq(self.CATE["class"] + "?instructor_name=" + keyword, {})
-            if isinstance(getById, list):
-                break
+        getById = self.R.repeatReq(self.CATE["class"] + "?instructor_name=" + keyword, {})
         return getById
 
     def getRawClassesById(self, course_id):
-        while 1:
-            getById = self.R.rawReq(self.CATE["class"] + "?course_id=" + course_id, {})
-            if isinstance(getById, list):
-                break
+        getById = self.R.repeatReq(self.CATE["class"] + "?course_id=" + course_id, {})
         return getById
 
     def getRawCourses(self, keywords=""):
-        while 1:
-            getByTitle = self.R.rawReq(self.CATE["course"] + "?course_title=" + keywords + "&limit=10", {})
-            if isinstance(getByTitle, list):
-                break
+        getByTitle = self.R.repeatReq(self.CATE["course"] + "?course_title=" + keywords + "&limit=10", {})
         return getByTitle
 
     def getRawCalenders(self, date="", term=None):
